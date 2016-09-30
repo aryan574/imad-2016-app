@@ -19,7 +19,7 @@ var articles = {
     'article-three':{
         tilte: 'Article Three : Aryan Singh',
         heading: 'Article Three',
-        date: 'Sept 5, 2016'
+        date: 'Sept 15, 2016'
     }
 };
 
