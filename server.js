@@ -70,7 +70,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:articleName', function (req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article[articleName]'));
+    res.sendFile(path.join(createTemplate(article[articleName])));
 });
 
 app.get('/ui/style.css', function (req, res) {
