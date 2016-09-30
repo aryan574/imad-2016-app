@@ -7,17 +7,17 @@ app.use(morgan('combined'));
 
 var articles = {
     'article-one':{
-        tilte: 'Article One : Aryan Singh',
+        title: 'Article One : Aryan Singh',
         heading: 'Article One',
         date: 'Sept 5, 2016'
     },
     'article-two':{
-        tilte: 'Article Two : Aryan Singh',
+        title: 'Article Two : Aryan Singh',
         heading: 'Article Two',
         date: 'Sept 10, 2016'
     },
     'article-three':{
-        tilte: 'Article Three : Aryan Singh',
+        title: 'Article Three : Aryan Singh',
         heading: 'Article Three',
         date: 'Sept 15, 2016'
     }
