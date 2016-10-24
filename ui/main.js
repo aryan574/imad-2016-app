@@ -1,15 +1,21 @@
-console.log('Loaded!');
-//Change the text of the main-text div
-var element = document.getElementById('main-text');
-element.innerHTML='New Value';
-
-var img = document.getElementById('madi');
-marginLeft=0;
-function moveRight(){
-    marginLeft += 1;
-    img.style.marginLeft = marginLeft + 'px';
-}
-img.onclick = function(){
-    var interval = setInterval(moveRight,50);
-    //img.style.marginLeft="100px";
+//Counter code
+var button = document.getElementById("counter");
+var counter = 0;
+button.onClick = function() {
+    // Create a request object
+    var request = new XMLHttpRequest();
+    // Capture the response and store it in a variable
+    request.onreadystatechange = function(){
+       if(request.readystate === XMLHttpRequest.DONE) {
+           //Take some action
+           if(request.status === 200){
+               var counter = request.responseText;
+               var span = document.getElementById("count");
+               span.innerHTML = counter.toString();
+           }
+       }
+    };
+    //Make the request
+    request.open('GET', 'http://aryan574.imad.hasura-app.io/counter');
+    request.send(null);
 };
