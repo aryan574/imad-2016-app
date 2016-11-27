@@ -25,7 +25,7 @@ app.get('/ui/typewriter.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'typewriter.js'));
 });
 
-app.get('/ui/portfolio', function(req, res){
+app.get('/portfolio', function(req, res){
   res.sendFile(path.join(__dirname, 'ui', 'portfolio.html'));
 });
 
