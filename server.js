@@ -2,6 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
+var app = require('express')(),
+    mailer = require('express-mailer');
 //var nodemailer =  require('nodemailer');
 //var hbs = require('nodemailers-express-handlebars');
 
