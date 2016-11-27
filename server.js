@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
 var nodemailer =  require('nodemailer');
-var hbs = require('nodemailers-express-handlebars');
+//var hbs = require('nodemailers-express-handlebars');
 
 var app = express();
 app.use(morgan('combined'));
@@ -18,10 +18,10 @@ var mailer = nodemailer.createTransport({
     }
 });
 
-mailer.use('compile', hsb({
+/*mailer.use('compile', hsb({
     viewPath:'view/email',
     extName: '.hbs'
-}));
+}));*/
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
