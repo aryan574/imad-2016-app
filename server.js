@@ -18,7 +18,11 @@ app.get('/ui/logo.png', function (req, res) {
 });
 
 app.get('/ui/background.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'background'));
+  res.sendFile(path.join(__dirname, 'ui', 'background.jpg'));
+});
+
+app.get('/ui/typewriter.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'typewriter.js'));
 });
 
 
