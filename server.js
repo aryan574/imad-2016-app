@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(morgan('combined'));
 
-var mailer = nodemailer.createTransport({
+/*var mailer = nodemailer.createTransport({
     host: 'smtp.mailgun.org',
     port: 465,
     secure: true,
@@ -16,7 +16,7 @@ var mailer = nodemailer.createTransport({
         user: 'postmaster@sandboxfa4ff40c8cf04c6aa5f3df97e7ad41dd.mailgun.org',
         pass: '76ca122875f2f399244e5374b32a5cb0'
     }
-});
+});*/
 
 /*mailer.use('compile', hsb({
     viewPath:'view/email',
