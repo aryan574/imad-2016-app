@@ -26,7 +26,7 @@ app.get('/ui/typewriter.js', function (req, res) {
 });
 
 app.get('/ui/portfolio', function(req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'typewriter.js'));
+  res.sendFile(path.join(__dirname, 'ui', 'portfolio.html'));
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
