@@ -64,7 +64,8 @@ app.get('/ui/header-bg.jpg', function(req, res){
 
 var  urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/contact', urlencodedParser, function(req, res){
-    res.render('contact', {qs: req.query});
+    //res.render('contact', {qs: req.query});
+    res.send(req.body);
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
