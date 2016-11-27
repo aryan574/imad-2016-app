@@ -3,11 +3,25 @@ var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
 var nodemailer =  require('nodemailer');
+var hbs = require('nodemailers-express-handlebars');
 
 var app = express();
 app.use(morgan('combined'));
 
-var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
+var mailer = nodemailer.createTransport({
+    host: 'smtp.mailgun.org',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'postmaster@sandboxfa4ff40c8cf04c6aa5f3df97e7ad41dd.mailgun.org',
+        pass: '76ca122875f2f399244e5374b32a5cb0'
+    }
+});
+
+mailer.use('compile', hsb({
+    viewPath:'view/email',
+    extName: '.hbs'
+}));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -68,11 +82,11 @@ var  urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/contact', urlencodedParser, function(req, res){
     var mailOptions = {
     from: req.body.email, // sender address
-    to: '', // list of receivers
+    to: 'sangamsingh.1994@gmail.com', // list of receivers
     subject: req.body.subject, // Subject line
     text: req.body.message, // plaintext body
     };
-    transporter.sendMail(mailOptions, function(error, info){
+    mailer.sendMail(mailOptions, function(error, info){
     if(error){
        res.send(error);
     }
