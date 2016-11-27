@@ -2,10 +2,12 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
+var nodemailer =  require('nodemailer');
 
 var app = express();
 app.use(morgan('combined'));
 
+var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -64,8 +66,18 @@ app.get('/ui/header-bg.jpg', function(req, res){
 
 var  urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/contact', urlencodedParser, function(req, res){
-    //res.render('contact', {qs: req.query});
-    res.send(req.body);
+    var mailOptions = {
+    from: req.body.email, // sender address
+    to: '', // list of receivers
+    subject: req.body.subject, // Subject line
+    text: req.body.message, // plaintext body
+    };
+    transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+       res.send(error);
+    }
+    res.send(info.response);
+    });
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
