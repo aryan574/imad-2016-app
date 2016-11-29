@@ -7,7 +7,7 @@ submit.onclick = function(){
         if(request.readyState === XMLHttpRequest.DONE) {
            //Take some action
            if(request.status === 200){
-               alert("Message sent successfully");
+               alert("Message sent successfully. Will return back to you in 48 hrs");
                }
            else if(request.status === 403){
                alert("Somethong went wrong. You may try again.");
