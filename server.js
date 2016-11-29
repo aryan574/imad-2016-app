@@ -89,8 +89,7 @@ app.get('/ui/header-bg.jpg', function(req, res){
   res.sendFile(path.join(__dirname, 'ui', 'header-bg.jpg'));
 });
 
-var  urlencodedParser = bodyParser.urlencoded({extended: false});
-app.post('/contact', urlencodedParser, function(req, res){
+app.post('/contact', function(req, res){
     /*var mailOptions = {
     from: req.body.email, // sender address
     to: 'sangamsingh.1994@gmail.com', // list of receivers
@@ -103,6 +102,9 @@ app.post('/contact', urlencodedParser, function(req, res){
     }
     res.send(info.response);
     });*/
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     var name = req.body.name;
     var email = req.body.email;
     var subject = req.body.subject;
