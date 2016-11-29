@@ -106,9 +106,6 @@ app.post('/contact', function(req, res){
     }
     res.send(info.response);
     });*/
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    var time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     var name = req.body.name;
     var email = req.body.email;
     var subject = req.body.subject;
