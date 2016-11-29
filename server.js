@@ -109,7 +109,7 @@ app.post('/contact', urlencodedParser, function(req, res){
     var email = req.body.email;
     var subject = req.body.subject;
     var message =  req.body.message;
-    pool.query("INSERT INTO Contact_Info (Name, Email, Subject, Message, Date, Time) VALUES ("+name+", "+email+", "+subject+", "+message+", "+date+", "+time+")", function(err, result){
+    pool.query("INSERT INTO contact_info (name, email, subject, message, date, time) VALUES ("+name+", "+email+", "+subject+", "+message+", "+date+", "+time+")", function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }else{
