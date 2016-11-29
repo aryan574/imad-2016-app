@@ -105,6 +105,7 @@ app.post('/contact', urlencodedParser, function(req, res){
     var today = new Date();
     date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
+    res.send(JSON.stringify(req.body));
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
