@@ -102,7 +102,7 @@ app.post('/contact', urlencodedParser, function(req, res){
     }
     res.send(info.response);
     });*/
-    pool.query("INSERT INTO CONTACT_INFO()")
+    pool.query("INSERT INTO CONTACT_INFO(Serial_No)")
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
