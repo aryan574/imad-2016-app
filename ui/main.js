@@ -26,5 +26,5 @@ submit.onclick = function(){
     console.log(message);
     request.open('POST', 'http://aryan574.imad.hasura-app.io/contact', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send({name: name,emai: email,subject: subject,message: message});
+    request.send({name: name,email: email,subject: subject,message: message});
 };
