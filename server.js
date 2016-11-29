@@ -109,11 +109,9 @@ app.post('/contact', urlencodedParser, function(req, res){
     var email = req.body.email;
     var subject = req.body.subject;
     var message =  req.body.message;
-    pool.query("INSERT INTO contact_info (name, email, subject, message, date, time) VALUES ($1, $2, $3, $4, $5, $6)", [name, email, subject, message, date, time], function(err, result){
+    pool.query("INSERT INTO contact_info (name, email, subject, message, date, time) VALUES ($1, $2, $3, $4, $5, $6)", [name, email, subject, message, date, time], function(err){
         if(err){
             res.status(500).send(err.String());
-        }else{
-            res.send(JSON.stringify(result));
         }
     });
 });
