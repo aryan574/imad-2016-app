@@ -17,6 +17,7 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 /*var mailer = nodemailer.createTransport({
     host: 'smtp.mailgun.org',
@@ -88,9 +89,8 @@ app.get('/ui/header-bg.jpg', function(req, res){
   res.sendFile(path.join(__dirname, 'ui', 'header-bg.jpg'));
 });
 
-var urlencoder = bodyParser.urlencoded({ extended:false })
-
-app.post('/contact', function(req, res){
+var  urlencodedParser = bodyParser.urlencoded({extended: false});
+app.post('/contact', urlencodedParser, function(req, res){
     /*var mailOptions = {
     from: req.body.email, // sender address
     to: 'sangamsingh.1994@gmail.com', // list of receivers
@@ -111,7 +111,7 @@ app.post('/contact', function(req, res){
         if(err){
             res.status(500).send(err.toString());
         }else{
-            res.send("Thanks for contacting.");
+            res.send(JSON.stringify(result.rows));
         }
     });
 });
