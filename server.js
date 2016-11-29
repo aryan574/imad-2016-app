@@ -102,14 +102,11 @@ app.post('/contact', function(req, res){
     }
     res.send(info.response);
     });*/
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    var time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     var name = req.body.name;
     var email = req.body.email;
     var subject = req.body.subject;
     var message =  req.body.message;
-    pool.query('INSERT INTO "contact_info" (name, email, subject, message, date, time) VALUES ($1, $2, $3, $4, $5, $6)', [name, email, subject, message, date, time], function(err,result){
+    pool.query('INSERT INTO "contact_info" (name, email, subject, message) VALUES ($1, $2, $3, $4)', [name, email, subject, message], function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
