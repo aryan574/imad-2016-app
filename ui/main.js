@@ -1,4 +1,4 @@
-var submit = document.getElementById('submit');
+var submit = document.getElementById('Submit');
 submit.onclick = function(){
     //Make a request to the server and send the name
     var request = new XMLHttpRequest();
