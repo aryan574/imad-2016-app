@@ -26,7 +26,7 @@ submit.onclick = function(){
     console.log(message);
     request.open('POST', 'http://aryan574.imad.hasura-app.io/contact', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    var kk = JSON.stringify({name: name, email: email, subject: subject, message: message});
+    var kk = JSON.stringify({"name": name, "email": email, "subject": subject, "message": message});
     console.log(kk.name);
     console.log(kk.email);
     console.log(kk.subject);
