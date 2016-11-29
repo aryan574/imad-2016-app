@@ -111,7 +111,7 @@ app.post('/contact', urlencodedParser, function(req, res){
     var message =  req.body.message;
     pool.query("INSERT INTO contact_info (name, email, subject, message, date, time) VALUES ("+name+", "+email+", "+subject+", "+message+", "+date+", "+time+")", function(err, result){
         if(err){
-            res.status(500).send(err.toString());
+            res.status(500).send(ere);
         }else{
             res.send(JSON.stringify(result));
         }
