@@ -105,7 +105,13 @@ app.post('/contact', urlencodedParser, function(req, res){
     var today = new Date();
     date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
-    res.send(JSON.stringify(req.body));
+    pool.query("SELECT * FROM Contact_Info", function(err, result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send(JSON.stringify(result.rows));
+        }
+    });
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
