@@ -30,6 +30,6 @@ submit.onclick = function(){
     console.log(kk.name);
     console.log(kk.email);
     console.log(kk.subject);
-    console.log(kk.message)
+    console.log(kk.message);
     request.send(JSON.stringify({name: name, email: email, subject: subject, message: message}));
 };
