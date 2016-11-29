@@ -20,6 +20,10 @@ submit.onclick = function(){
     var email = document.getElementById('Email').value;
     var subject = document.getElementById('Subject').value;
     var message = document.getElementById('Message').value;
+    console.log(name);
+    console.log(email);
+    console.log(subject);
+    console.log(message);
     request.open('POST', 'http://aryan574.imad.hasura-app.io/contact', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send({name: name,emai: email,subject: subject,message: message});
