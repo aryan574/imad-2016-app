@@ -4,6 +4,16 @@ var path = require('path');
 var bodyParser = require('body-parser');
 //var nodemailer =  require('nodemailer');
 //var hbs = require('nodemailers-express-handlebars');
+var Pool = require('pg').Pool;
+var crypto = require('crypto');
+
+var config = {
+    user: 'aryan574',
+    database: 'aryan574',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
+    password: process.env.DB_PASSWORD
+};
 
 var app = express();
 app.use(morgan('combined'));
@@ -17,7 +27,7 @@ app.use(morgan('combined'));
         pass: '76ca122875f2f399244e5374b32a5cb0'
     }
 });*/
-
+var pool = new Pool(config);
 /*mailer.use('compile', hsb({
     viewPath:'view/email',
     extName: '.hbs'
@@ -92,6 +102,7 @@ app.post('/contact', urlencodedParser, function(req, res){
     }
     res.send(info.response);
     });*/
+    pool.query("INSERT INTO CONTACT_INFO()")
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
