@@ -16,10 +16,10 @@ submit.onclick = function(){
            }
        }
     };
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var subject = document.getElementById('subject').value;
-    var message = document.getElementById('message').value;
+    var name = document.getElementById('Name').value;
+    var email = document.getElementById('Email').value;
+    var subject = document.getElementById('Subject').value;
+    var message = document.getElementById('Message').value;
     request.open('POST', 'http://aryan574.imad.hasura-app.io/contact', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send({name: name,emai: email,subject: subject,message: message});
