@@ -2,8 +2,8 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
-//var nodemailer =  require('nodemailer');
-//var hbs = require('nodemailers-express-handlebars');
+var nodemailer =  require('nodemailer');
+var hbs = require('nodemailers-express-handlebars');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 
@@ -18,7 +18,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-/*var mailer = nodemailer.createTransport({
+var mailer = nodemailer.createTransport({
     host: 'smtp.mailgun.org',
     port: 465,
     secure: true,
@@ -26,12 +26,12 @@ app.use(morgan('combined'));
         user: 'postmaster@sandboxfa4ff40c8cf04c6aa5f3df97e7ad41dd.mailgun.org',
         pass: '76ca122875f2f399244e5374b32a5cb0'
     }
-});*/
+});
 var pool = new Pool(config);
-/*mailer.use('compile', hsb({
+mailer.use('compile', hsb({
     viewPath:'view/email',
     extName: '.hbs'
-}));*/
+}));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -90,7 +90,7 @@ app.get('/ui/header-bg.jpg', function(req, res){
 
 var  urlencodedParser = bodyParser.urlencoded({extended: false});
 app.post('/contact', urlencodedParser, function(req, res){
-    /*var mailOptions = {
+    var mailOptions = {
     from: req.body.email, // sender address
     to: 'sangamsingh.1994@gmail.com', // list of receivers
     subject: req.body.subject, // Subject line
@@ -101,8 +101,8 @@ app.post('/contact', urlencodedParser, function(req, res){
        res.send(error);
     }
     res.send(info.response);
-    });*/
-    var today = new Date();
+    });
+    /*var today = new Date();
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     var time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     var name = req.body.name;
@@ -113,7 +113,7 @@ app.post('/contact', urlencodedParser, function(req, res){
         if(err){
             res.status(500).send(err.String());
         }
-    });
+    });*/
 });
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
