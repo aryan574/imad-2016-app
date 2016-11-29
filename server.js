@@ -110,6 +110,10 @@ app.post('/contact', function(req, res){
     var email = req.body.email;
     var subject = req.body.subject;
     var message =  req.body.message;
+    console.log(name);
+    console.log(email);
+    console.log(subject);
+    console.log(message);
     pool.query('INSERT INTO "contact_info" (name, email, subject, message) VALUES ($1, $2, $3, $4)', [name, email, subject, message], function(err,result){
         if(err){
             res.status(500).send(err.toString());
