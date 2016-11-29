@@ -89,8 +89,7 @@ app.get('/ui/header-bg.jpg', function(req, res){
   res.sendFile(path.join(__dirname, 'ui', 'header-bg.jpg'));
 });
 
-var  urlencodedParser = bodyParser.urlencoded({extended: false});
-app.post('/contact', urlencodedParser, function(req, res){
+app.post('/contact', function(req, res){
     /*var mailOptions = {
     from: req.body.email, // sender address
     to: 'sangamsingh.1994@gmail.com', // list of receivers
