@@ -17,6 +17,7 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());
 
 /*var mailer = nodemailer.createTransport({
     host: 'smtp.mailgun.org',
@@ -109,9 +110,11 @@ app.post('/contact', urlencodedParser, function(req, res){
     var email = req.body.email;
     var subject = req.body.subject;
     var message =  req.body.message;
-    pool.query("INSERT INTO contact_info (name, email, subject, message, date, time) VALUES ($1, $2, $3, $4, $5, $6)", [name, email, subject, message, date, time], function(err){
+    pool.query('INSERT INTO "contact_info" (name, email, subject, message, date, time) VALUES ($1, $2, $3, $4, $5, $6)', [name, email, subject, message, date, time], function(err,result){
         if(err){
-            res.status(500).send(err.String());
+            res.status(500).send(err.toString());
+        }else{
+            res.send(JSON.stringify(result.rows));
         }
     });
 });
