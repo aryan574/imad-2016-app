@@ -103,9 +103,13 @@ app.post('/contact', urlencodedParser, function(req, res){
     res.send(info.response);
     });*/
     var today = new Date();
-    date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
-    pool.query("INSERT INTO Contact_Info (Name, Email, Subject, Message, Date, Time) VALUES ("+req.body.name+", "+req.body.email+", "+req.body.subject+", "+req.body.message+", "+date+", "+time+")", function(err, result){
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    var time = today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
+    var name = req.body.name;
+    var email = req.body.email;
+    var subject = req.body.subject;
+    var message =  req.body.message;
+    pool.query("INSERT INTO Contact_Info (Name, Email, Subject, Message, Date, Time) VALUES ("+name+", "+email+", "+subject+", "+message+", "+date+", "+time+")", function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }else{
